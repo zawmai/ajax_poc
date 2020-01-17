@@ -6,7 +6,7 @@ var filter = function (pathname, req) {
   // replace www.myapp.example with origin(s) that your content will be served from
   // return (req.headers.origin === 'https://www.myapp.example');
   // multiple origin version:
-  return ((req.headers.origin === 'http://zmai-learn-ajax.glitch.me:3000') || (req.headers.origin === 'https://zmai-learn-ajax.glitch.me:3000'));   
+  return ((req.headers.origin === 'http://zmai-learn-ajax.glitch.me') || (req.headers.origin === 'https://zmai-learn-ajax.glitch.me'));   
 };
 
 var apiOptions = {
