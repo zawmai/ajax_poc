@@ -70,12 +70,18 @@ var shipEngineApiOptions = {
     // and KEYVALUE stored in Heroku environment variable
     proxyReq.path += ('&api_key=' + process.env.SHIPENGINE_APIKEY);
     proxyReq.setHeader('Access-Control-Allow-Origin', '*');
+    console.log('------------------------------------------------- BEGIN REQUEST -------------------------------------------------');
+    console.log(proxyReq);
+    console.log('------------------------------------------------- END REQUEST -------------------------------------------------');
   },
   onProxyRes: (proxyRes) => {
     // Apply a Access-Control-Allow-Origin: * header to every 
     // response from the server.
     // Reference: https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
+    proxyRes.headers[''Access-Control-Allow-Origin'] = '*';
+    console.log('------------------------------------------------- BEGIN RESPONSE -------------------------------------------------');
     console.log(proxyRes);
+    console.log('------------------------------------------------- END RESPONSE -------------------------------------------------');
   },
   logLevel: 'debug' // verbose server logging
 };
