@@ -3,6 +3,7 @@ var proxy = require('http-proxy-middleware');
 
 const ajaxUrlHost = 'zmai-learn-ajax.glitch.me';
 const shipEngineUrlHost = 'zmai-shipengine-demo.glitch.me';
+const herokuAppUrlHost = 'zmai-learn-ajax.herokuapp.com';
 
 // proxy middleware options
 var ajaxFilter = function (pathname, req) {
@@ -21,7 +22,9 @@ var shipEngineFilter = function (pathname, req) {
   // multiple origin version:
   return (
           (req.headers.origin === 'http://' + shipEngineUrlHost) ||
-          (req.headers.origin === 'https://' + shipEngineUrlHost)
+          (req.headers.origin === 'https://' + shipEngineUrlHost) ||
+          (req.headers.origin === 'http://' + herokuAppUrlHost) ||
+          (req.headers.origin === 'https://' + herokuAppUrlHost)
          );   
 };
           
