@@ -39,11 +39,6 @@ var npsApiOptions = {
     // and KEYVALUE stored in Heroku environment variable
     proxyReq.path += ('&api_key=' + process.env.NPS_APIKEY);
   },
-  onProxyRes: (proxyRes) => {
-    // Apply a Access-Control-Allow-Origin: * header to every 
-    // response from the server.
-    // Reference: https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
-  },
   logLevel: 'debug' // verbose server logging
 };
 
@@ -61,11 +56,6 @@ var smartyApiOptions = {
     proxyReq.path += ('&api_key=' + process.env.NPS_APIKEY);
 
   },
-  onProxyRes: (proxyRes) => {
-    // Apply a Access-Control-Allow-Origin: * header to every 
-    // response from the server.
-    // Reference: https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
-  },
   logLevel: 'debug' // verbose server logging
 };
 
@@ -73,31 +63,20 @@ var shipEngineApiOptions = {
   // replace api.datasource.example with the url of your target host
   target: 'https://api.shipengine.com',
   changeOrigin: true, // needed for virtual hosted sites like Heroku
-  cookieDomainRewrite: true,
-  secure: true,
   pathRewrite: {
     '^/shipengine/': '/', // remove endpoint from request path ('^/api/': '/')
   },
-  hostRewrite: true,
   onProxyReq: (proxyReq) => {
     // append key-value pair for API key to end of path
     // using KEYNAME provided by web service
     // and KEYVALUE stored in Heroku environment variable
-//     proxyReq.path += ('&api_key=' + process.env.SHIPENGINE_APIKEY);
     proxyReq.setHeader('API-Key', process.env.SHIPENGINE_APIKEY);
-  },
-  "headers": {
-   "host": "api.shipengine.com",
-   "origin": null
   },
   onProxyRes: (proxyRes) => {
     // Apply a Access-Control-Allow-Origin: * header to every 
     // response from the server.
     // Reference: https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
     proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-//     console.log('------------------------------------------------- BEGIN RESPONSE -------------------------------------------------');
-//     console.log(proxyRes);
-//     console.log('------------------------------------------------- END RESPONSE -------------------------------------------------');
   },
   onError: (err, req, res) => {
     console.log(err);
