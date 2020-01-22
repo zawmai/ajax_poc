@@ -12,7 +12,9 @@ var ajaxFilter = function (pathname, req) {
   // multiple origin version:
   return (
           (req.headers.origin === 'http://' + ajaxUrlHost) || 
-          (req.headers.origin === 'https://' + ajaxUrlHost)
+          (req.headers.origin === 'https://' + ajaxUrlHost) ||
+          (req.headers.origin === 'http://' + herokuAppUrlHost) ||
+          (req.headers.origin === 'https://' + herokuAppUrlHost)
          );   
 };
 
