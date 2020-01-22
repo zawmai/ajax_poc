@@ -105,7 +105,7 @@ var shipEngineApiOptions = {
 //     console.log(proxyRes);
 //     console.log('------------------------------------------------- END RESPONSE -------------------------------------------------');
   },
-  option.onError: (err, req, res) => {
+  onError: (err, req, res) => {
     console.log(err);
   },
   logLevel: 'debug' // verbose server logging
