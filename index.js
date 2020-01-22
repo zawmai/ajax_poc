@@ -83,7 +83,8 @@ var shipEngineApiOptions = {
     // append key-value pair for API key to end of path
     // using KEYNAME provided by web service
     // and KEYVALUE stored in Heroku environment variable
-    proxyReq.path += ('&api_key=' + process.env.SHIPENGINE_APIKEY);
+//     proxyReq.path += ('&api_key=' + process.env.SHIPENGINE_APIKEY);
+    proxyReq.setHeader('API-Key', process.env.SHIPENGINE_APIKEY);
   },
   "headers": {
    "host": "api.shipengine.com",
