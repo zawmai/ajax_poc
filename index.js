@@ -73,14 +73,21 @@ var shipEngineApiOptions = {
   // replace api.datasource.example with the url of your target host
   target: 'https://api.shipengine.com',
   changeOrigin: true, // needed for virtual hosted sites like Heroku
+  cookieDomainRewrite: true,
+  secure: true,
   pathRewrite: {
     '^/shipengine/': '/', // remove endpoint from request path ('^/api/': '/')
   },
+  hostRewrite: true,
   onProxyReq: (proxyReq) => {
     // append key-value pair for API key to end of path
     // using KEYNAME provided by web service
     // and KEYVALUE stored in Heroku environment variable
     proxyReq.path += ('&api_key=' + process.env.SHIPENGINE_APIKEY);
+  },
+  "headers": {
+   "host": "api.shipengine.com",
+   "origin": null
   },
   onProxyRes: (proxyRes) => {
     // Apply a Access-Control-Allow-Origin: * header to every 
