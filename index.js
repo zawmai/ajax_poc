@@ -13,8 +13,6 @@ var ajaxFilter = function (pathname, req) {
   return (
           (req.headers.origin === 'http://' + ajaxUrlHost) || 
           (req.headers.origin === 'https://' + ajaxUrlHost) ||
-          (req.headers.origin === 'http://' + herokuAppUrlHost) ||
-          (req.headers.origin === 'https://' + herokuAppUrlHost)
          );   
 };
 
@@ -25,8 +23,6 @@ var shipEngineFilter = function (pathname, req) {
   return (
           (req.headers.origin === 'http://' + shipEngineUrlHost) ||
           (req.headers.origin === 'https://' + shipEngineUrlHost) ||
-          (req.headers.origin === 'http://' + herokuAppUrlHost) ||
-          (req.headers.origin === 'https://' + herokuAppUrlHost)
          );   
 };
           
@@ -42,17 +38,11 @@ var npsApiOptions = {
     // using KEYNAME provided by web service
     // and KEYVALUE stored in Heroku environment variable
     proxyReq.path += ('&api_key=' + process.env.NPS_APIKEY);
-//     console.log('------------------------------------------------- BEGIN RESPONSE -------------------------------------------------');
-//     console.log(proxyReq);
-//     console.log('------------------------------------------------- END RESPONSE -------------------------------------------------');
   },
   onProxyRes: (proxyRes) => {
     // Apply a Access-Control-Allow-Origin: * header to every 
     // response from the server.
     // Reference: https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
-//     console.log('------------------------------------------------- BEGIN RESPONSE -------------------------------------------------');
-//     console.log(proxyRes);
-//     console.log('------------------------------------------------- END RESPONSE -------------------------------------------------');
   },
   logLevel: 'debug' // verbose server logging
 };
@@ -69,17 +59,12 @@ var smartyApiOptions = {
     // using KEYNAME provided by web service
     // and KEYVALUE stored in Heroku environment variable
     proxyReq.path += ('&api_key=' + process.env.NPS_APIKEY);
-//     console.log('------------------------------------------------- BEGIN REQUEST -------------------------------------------------');
-//     console.log(proxyReq);
-//     console.log('------------------------------------------------- END REQUEST -------------------------------------------------');
+
   },
   onProxyRes: (proxyRes) => {
     // Apply a Access-Control-Allow-Origin: * header to every 
     // response from the server.
     // Reference: https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
-//     console.log('------------------------------------------------- BEGIN RESPONSE -------------------------------------------------');
-//     console.log(proxyRes);
-//     console.log('------------------------------------------------- END RESPONSE -------------------------------------------------');
   },
   logLevel: 'debug' // verbose server logging
 };
@@ -96,10 +81,6 @@ var shipEngineApiOptions = {
     // using KEYNAME provided by web service
     // and KEYVALUE stored in Heroku environment variable
     proxyReq.path += ('&api_key=' + process.env.SHIPENGINE_APIKEY);
-    proxyReq.setHeader('Access-Control-Allow-Origin', '*');
-//     console.log('------------------------------------------------- BEGIN REQUEST -------------------------------------------------');
-//     console.log(proxyReq);
-//     console.log('------------------------------------------------- END REQUEST -------------------------------------------------');
   },
   onProxyRes: (proxyRes) => {
     // Apply a Access-Control-Allow-Origin: * header to every 
