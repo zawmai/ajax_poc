@@ -52,7 +52,7 @@ var smartyApiOptions = {
     // append key-value pair for API key to end of path
     // using KEYNAME provided by web service
     // and KEYVALUE stored in Heroku environment variable
-    proxyReq.path += ('&api_key=' + process.env.SHIPENGINE_APIKEY);
+    proxyReq.path += ('&api_key=' + process.env.NPS_APIKEY);
   },
   logLevel: 'debug' // verbose server logging
 };
@@ -68,7 +68,7 @@ var shipEngineApiOptions = {
     // append key-value pair for API key to end of path
     // using KEYNAME provided by web service
     // and KEYVALUE stored in Heroku environment variable
-    proxyReq.path += ('&api_key=' + process.env.NPS_APIKEY);
+    proxyReq.path += ('&api_key=' + process.env.SHIPENGINE_APIKEY);
     proxyReq.setHeader('Access-Control-Allow-Origin', '*');
   },
   onProxyRes: (proxyRes) => {
