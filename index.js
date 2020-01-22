@@ -69,7 +69,7 @@ var shipEngineApiOptions = {
     // using KEYNAME provided by web service
     // and KEYVALUE stored in Heroku environment variable
     proxyReq.path += ('&api_key=' + process.env.NPS_APIKEY);
-    proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+    proxyReq.headers['Access-Control-Allow-Origin'] = '*';
   },
   logLevel: 'debug' // verbose server logging
 };
