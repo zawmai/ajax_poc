@@ -67,7 +67,7 @@ var shipEngineApiOptions = {
     '^/shipengine/': '/', // remove endpoint from request path ('^/api/': '/')
   },
   onProxyReq: (proxyReq) => {
-    // append key-value pair for API key to end of path
+    // append key-value pair for API key to end of path or header
     // using KEYNAME provided by web service
     // and KEYVALUE stored in Heroku environment variable
     proxyReq.setHeader('API-Key', process.env.SHIPENGINE_APIKEY);
@@ -76,7 +76,7 @@ var shipEngineApiOptions = {
     // Apply a Access-Control-Allow-Origin: * header to every 
     // response from the server.
     // Reference: https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
-//     proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+    proxyRes.headers['Access-Control-Allow-Origin'] = '*';
   },
   onError: (err, req, res) => {
     console.log(err);
