@@ -110,7 +110,7 @@ var smartyApiProxy = proxy(ajaxFilter, smartyApiOptions);
 var shipEngineApiProxy = proxy(shipEngineFilter, shipEngineApiOptions);
 
 var app = express();
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 3000));
 
 app.use('/nps', npsApiProxy);
 app.use('/smarty', smartyApiProxy);
