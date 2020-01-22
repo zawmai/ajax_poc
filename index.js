@@ -12,7 +12,7 @@ var ajaxFilter = function (pathname, req) {
   // multiple origin version:
   return (
           (req.headers.origin === 'http://' + ajaxUrlHost) || 
-          (req.headers.origin === 'https://' + ajaxUrlHost) ||
+          (req.headers.origin === 'https://' + ajaxUrlHost)
          );   
 };
 
@@ -22,7 +22,7 @@ var shipEngineFilter = function (pathname, req) {
   // multiple origin version:
   return (
           (req.headers.origin === 'http://' + shipEngineUrlHost) ||
-          (req.headers.origin === 'https://' + shipEngineUrlHost) ||
+          (req.headers.origin === 'https://' + shipEngineUrlHost)
          );   
 };
           
